@@ -193,6 +193,10 @@ class NewmanExecutor(JavaScriptExecutor):
         self.npm_tool = self._get_tool(NPM)
         self.newman_tool = self._get_tool(
             Newman, tools_dir=self.tools_dir, node_tool=self.node_tool, npm_tool=self.npm_tool)
+        async_js = self._get_tool(
+            AsyncJS, tools_dir=self.tools_dir, node_tool=self.node_tool, npm_tool=self.npm_tool
+        ),
+
         tcl_lib = self._get_tool(TclLibrary)
         taurus_newman_plugin = self._get_tool(TaurusNewmanPlugin)
 
@@ -200,8 +204,9 @@ class NewmanExecutor(JavaScriptExecutor):
             self.node_tool,
             self.npm_tool,
             self.newman_tool,
+            async_js,
             tcl_lib,
-            taurus_newman_plugin
+            taurus_newman_plugin,
         ]
 
         self._check_tools(tools)
@@ -359,6 +364,13 @@ class Newman(NPMPackage):
     def __init__(self, **kwargs):
         super(Newman, self).__init__(**kwargs)
         self.entrypoint = "%s/node_modules/%s/bin/newman.js" % (self.tools_dir, self.PACKAGE_NAME)
+
+
+class AsyncJS(NPMPackage):
+    PACKAGE_NAME = "async"
+
+    def __init__(self, **kwargs):
+        super(AsyncJS, self).__init__(**kwargs)
 
 
 class TaurusMochaPlugin(RequiredTool):
