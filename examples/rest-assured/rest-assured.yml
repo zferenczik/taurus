@@ -1,0 +1,25 @@
+---
+#####################################################################
+# ~/.bzt/selenium-taurus/ dir contains all the runtime dependencies #
+#####################################################################
+
+execution:
+- scenario: test 
+  executor: testng
+  runner: testng
+  concurrency: 
+    local: 1
+    cloud: 2
+  hold-for: 5m
+
+scenarios:
+  test:
+#    browser: Chrome
+    think-time: 1s500ms
+    script: RestAssuredDemo.java
+    #Compile time dependencies
+    additional-classpath:
+      - ~/.bzt/selenium-taurus/rest-assured-3.2.0.jar
+
+#settings:
+#  artifacts-dir: ~/.bzt/selenium-taurus/

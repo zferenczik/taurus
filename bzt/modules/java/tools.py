@@ -93,9 +93,21 @@ class Json(JarTool):
 
 
 class TestNG(JarTool):
-    VERSION = "6.8.5"
+    VERSION = "6.14.3"
     REMOTE_PATH = "org/testng/testng/{version}/testng-{version}.jar"
     TOOL_FILE = "testng-{version}.jar"
+
+
+class RestAssured(JarTool):
+    VERSION = "3.2.0"
+    REMOTE_PATH = "io.rest-assured/rest-assured/{version}/rest-assured-{version}.jar"
+    TOOL_FILE = "rest-assured-{version}.jar"
+
+
+class JsonSchemaValidator(JarTool):
+    VERSION = "3.2.0"
+    REMOTE_PATH = "io.rest-assured/json-schema-validator/{version}/json-schema-validator-{version}.jar"
+    TOOL_FILE = "json-schema-validator-{version}.jar"
 
 
 class Hamcrest(JarTool):
