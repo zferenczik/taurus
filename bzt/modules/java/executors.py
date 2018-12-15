@@ -48,6 +48,8 @@ class JavaTestRunner(SubprocessedExecutor, HavingInstallableTools):
 
     def install_required_tools(self):
         self._add_jar_tool(SeleniumServer, local_path=self.settings.get("selenium-server"))
+        self._add_jar_tool(RestAssured, local_path=self.settings.get("rest-assured"))
+        self._add_jar_tool(JsonSchemaValidator, local_parh=self.settings.get("jon-schema-validator"))
         self._add_jar_tool(Hamcrest, local_path=self.settings.get("hamcrest-core"))
         self._add_jar_tool(Json, local_path=self.settings.get("json-jar"))
         self._add_jar_tool(TaurusJavaHelper)
